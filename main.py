@@ -8,7 +8,7 @@ app = Flask(__name__)
 sessions = {}
 
 LOVENSE_API = "https://api.lovense.com/api/lan/v2/command"
-DEV_TOKEN = "YOUR_LOVENSE_DEV_TOKEN"  # Replace with your token from developer.lovense.com
+DEV_TOKEN = "f_dedqE0FLDS_Fg3FYcNlvw2MfWWQxLq0zGTWHqeocaVja0PXV56OH1aLA80ZFjm0FYEnsYygmW1oDeEi8MsIg"
 
 @app.route("/")
 def index():
