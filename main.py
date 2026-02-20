@@ -16,12 +16,11 @@ def index():
 
 # Step 1: Generate a link for user to connect their toy
 @app.route("/link", methods=["GET"])
+@app.route("/link", methods=["GET"])
 def link():
     uid = request.args.get("uid")
     if not uid:
         return jsonify({"error": "missing uid"}), 400
-
-    callback_url = f"https://roblense.onrender.com/callback?uid={uid}"
 
     r = requests.post("https://api.lovense.com/api/lan/getQrCode", json={
         "token": DEV_TOKEN,
@@ -32,8 +31,8 @@ def link():
     })
 
     data = r.json()
-    if data.get("result") != True:
-        return jsonify({"error": "failed to get link", "detail": data}), 500
+    print(f"[roblense] Lovense response: {data}")  # add this
+    return jsonify(data)  # return the whole thing so we can see it
 
     return jsonify({
         "qr": data.get("message"),
